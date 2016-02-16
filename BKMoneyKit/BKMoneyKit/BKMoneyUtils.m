@@ -25,19 +25,14 @@
     UIImage *cardLogoImage = nil;
     
     if (shortName) {
-        cardLogoImage = [self imageNamed:[NSString stringWithFormat:@"BKMoneyKit.bundle/CardLogo/%@@2x", shortName]];
+        cardLogoImage = [UIImage imageNamed:[NSString stringWithFormat:@"BKMoneyKit.bundle/CardLogo/%@", shortName]];
     }
     
     if (nil == cardLogoImage) {
-        cardLogoImage = [self imageNamed:@"BKMoneyKit.bundle/CardLogo/default@2x"];
+        cardLogoImage = [UIImage imageNamed:@"BKMoneyKit.bundle/CardLogo/default"];
     }
     
     return cardLogoImage;
-}
-
-+ (UIImage *)imageNamed:(NSString *)imageName {
-    NSString *path = [[NSBundle bundleForClass:[self class]] pathForResource:imageName ofType:@"png"];
-    return [UIImage imageWithContentsOfFile:path];
 }
 
 @end

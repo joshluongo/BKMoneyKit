@@ -6,7 +6,7 @@
 //  Copyright (c) 2014년 Byungkook Jang. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 #import "BKCardNumberFormatter.h"
 
 @interface BKCardNumberLabel : UILabel
