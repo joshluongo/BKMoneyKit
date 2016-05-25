@@ -29,7 +29,7 @@
         UIImage *localCardLogoImage = [UIImage imageNamed:shortName];
         
         if (localCardLogoImage == nil) {
-            cardLogoImage = [self imageNamed:[NSString stringWithFormat:@"BKMoneyKit.bundle/CardLogo/%@@2x", shortName]];
+            cardLogoImage = [UIImage imageNamed:[NSString stringWithFormat:@"BKMoneyKit.bundle/CardLogo/%@@2x", shortName]];
         } else {
             cardLogoImage = localCardLogoImage;
         }
