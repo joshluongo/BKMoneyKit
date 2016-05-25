@@ -23,20 +23,21 @@
 + (UIImage *)cardLogoImageWithShortName:(NSString *)shortName
 {
     UIImage *cardLogoImage = nil;
+    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
     
     if (shortName) {
         //Check if local image exist
         UIImage *localCardLogoImage = [UIImage imageNamed:shortName];
         
         if (localCardLogoImage == nil) {
-            cardLogoImage = [UIImage imageNamed:[NSString stringWithFormat:@"BKMoneyKit.bundle/CardLogo/%@@2x", shortName]];
+            cardLogoImage = [UIImage imageNamed:[NSString stringWithFormat:@"BKMoneyKit.bundle/CardLogo/%@@2x", shortName] inBundle:bundle compatibleWithTraitCollection:nil];
         } else {
             cardLogoImage = localCardLogoImage;
         }
     }
     
     if (nil == cardLogoImage) {
-        cardLogoImage = [UIImage imageNamed:@"BKMoneyKit.bundle/CardLogo/default"];
+        cardLogoImage = [UIImage imageNamed:@"BKMoneyKit.bundle/CardLogo/default" inBundle:bundle compatibleWithTraitCollection:nil];
     }
     
     return cardLogoImage;
