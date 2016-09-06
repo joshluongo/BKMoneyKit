@@ -59,9 +59,11 @@
 {
     if ([super respondsToSelector:aSelector]) {
         return YES;
-    } else {
+    } else if (_userDelegate != nil) {
         return [_userDelegate respondsToSelector:aSelector];
     }
+    
+    return NO;
 }
 
 - (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector
