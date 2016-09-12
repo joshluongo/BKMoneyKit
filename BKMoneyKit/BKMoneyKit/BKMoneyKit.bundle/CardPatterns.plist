@@ -76,7 +76,7 @@
 	</dict>
 	<dict>
 		<key>pattern</key>
-		<string>^5[1-5]</string>
+		<string>^(5[1-5]|2[2-7])</string>
 		<key>companyName</key>
 		<string>MasterCard</string>
 		<key>shortName</key>
