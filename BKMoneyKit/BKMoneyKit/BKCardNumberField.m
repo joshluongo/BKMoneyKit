@@ -51,6 +51,10 @@
         }
     }
     
+    // Get the original cursor location.
+    UITextPosition *beginning = textField.beginningOfDocument;
+    UITextPosition *cursorLocation = [textField positionFromPosition:beginning offset:(range.location + string.length)];
+    
     NSString *currentText = textField.text;
     
     NSCharacterSet *nonNumberCharacterSet = [self.numberCharacterSet invertedSet];
@@ -73,6 +77,14 @@
 
     // send editing changed action because we edited text manually.
     [self sendActionsForControlEvents:UIControlEventEditingChanged];
+    
+    // cursorLocation will be (null) if you're inputting text at the end of the string
+    // if already at the end, no need to change location as it will default to end anyway
+    if(cursorLocation)
+    {
+        // set start/end location to same spot so that nothing is highlighted
+        [textField setSelectedTextRange:[textField textRangeFromPosition:cursorLocation toPosition:cursorLocation]];
+    }
     
     return NO;
 }
