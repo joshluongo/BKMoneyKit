@@ -65,9 +65,14 @@
     NSDecimalNumber *decimalNumber = [NSDecimalNumber decimalNumberWithString:digits];
     
     if (self.numberFormatter.maximumFractionDigits > 0) {
-        decimalNumber = [decimalNumber decimalNumberByDividingBy:[NSDecimalNumber decimalNumberWithMantissa:1 exponent:self.numberFormatter.maximumFractionDigits isNegative:NO]];
+        // Verify number is valid.
+        if ([decimalNumber isEqualToNumber:[NSDecimalNumber notANumber]]) {
+            decimalNumber = 0;
+        } else {
+            decimalNumber = [decimalNumber decimalNumberByDividingBy:[NSDecimalNumber decimalNumberWithMantissa:1 exponent:self.numberFormatter.maximumFractionDigits isNegative:NO]];
+        }
     }
-    
+
     // get current cursor position
     UITextRange* selectedRange = [textField selectedTextRange];
     UITextPosition* start = textField.beginningOfDocument;
